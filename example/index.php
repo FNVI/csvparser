@@ -35,8 +35,8 @@ and open the template in the editor.
             $headings = filter_input(INPUT_POST, "headings", FILTER_VALIDATE_BOOLEAN);
             
             if($fileUploaded){
-                $csv = new FNVi\CSVParser\CSVParser($_FILES["filename"]["tmp_name"],$headings);
-                $csv->swapHeadings(["Equip Type"=>"Equipment type","Hard Soft"=>"Type"]);
+                $csv = new FNVi\CSVParser\CSVParser($_FILES["filename"]["tmp_name"],$headings,true);
+                $csv->swapHeadings(["Equip Type"=>"equipment","Hard Soft"=>"equipment"]);
             }
         ?>
         <main class="container">
