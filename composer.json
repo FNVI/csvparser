@@ -1,0 +1,18 @@
+{
+    "name": "fnvi/csvparser",
+    "description": "Description of project csvparser.",
+    "authors": [
+        {
+            "name": "Joe Wheatley",
+            "email": "joew@fnvi.co.uk"
+        }
+    ],
+    "autoload": {
+        "psr-4": { 
+            "FNVi\\CSVParser\\": "src"
+        },
+        "files":[
+            "settings.php"
+        ]
+    }
+}
