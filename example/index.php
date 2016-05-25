@@ -30,8 +30,14 @@ and open the template in the editor.
         <?php
             include '../vendor/autoload.php';
             
-            $fileUploaded = boolval($_FILES["filename"]);
-            echo $fileUploaded;
+            $fileUploaded = $_FILES["filename"] ? true : false;
+            
+            $headings = filter_input(INPUT_POST, "headings", FILTER_VALIDATE_BOOLEAN);
+            
+            if($fileUploaded){
+                $csv = new FNVi\CSVParser\CSVParser($_FILES["filename"]["tmp_name"],$headings);
+                $csv->swapHeadings(["Equip Type"=>"Equipment type","Hard Soft"=>"Type"]);
+            }
         ?>
         <main class="container">
             <div class="row">
@@ -39,26 +45,36 @@ and open the template in the editor.
                     <legend>
                         Upload File
                     </legend>
-                    <form enctype="multipart/form-data" method="post" class="form-horizontal">
+                    <form enctype="multipart/form-data" method="post" class="form-inline">
                         <div class="form-group">
-                            <label class="control-label col-sm-2">
+                            <label class="control-label">
                                 File:
                             </label>
-                            <div class="col-sm-4">
-                                <label class="btn btn-success">
-                                    Choose File
-                                    <input type="file" accept=".csv" name="filename" style="display:none; width: 0px; height:0px;">
-                                </label>
-                            </div>
+                            <label class="btn btn-success">
+                                Choose File
+                                <input type="file" accept=".csv" name="filename" style="display:none; width: 0px; height:0px;">
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="headings" checked> Use headings
+                            </label>
                         </div>
                         <button class="btn btn-success">Upload</button>
                     </form>
                 </fieldset>
             </div>
-                    <?php if($fileUploaded) { ?>
-                    
-                    <?php } ?>
-
+            <br>
+            <?php if($fileUploaded) { ?>
+                <div class="row">
+                    <fieldset class="col-xs-12">
+                        <legend>Results</legend>
+                           <?php foreach($csv as $row){
+                                echo "<pre>".json_encode($row, 128)."</pre>";
+                            } ?>
+                    </fieldset>
+                </div>
+            <?php } ?>
         </main>
     </body>
 </html>
