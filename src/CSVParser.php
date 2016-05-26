@@ -1,6 +1,6 @@
 <?php
 
-namespace FNVi\CSVParser;
+namespace FNVi\CSVTools;
 
 /**
  * Provides Iterator access to a CSV file.

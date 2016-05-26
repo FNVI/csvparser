@@ -22,7 +22,10 @@ and open the template in the editor.
                         <a href="index.php">Home</a>
                     </li>
                     <li>
-                        <a href="#">Other link</a>
+                        <a href="reader.php">Reader</a>
+                    </li>
+                    <li>
+                        <a href="writer.php">Writer</a>
                     </li>
                 </ul>
             </div>
@@ -30,51 +33,15 @@ and open the template in the editor.
         <?php
             include '../vendor/autoload.php';
             
-            $fileUploaded = $_FILES["filename"] ? true : false;
-            
-            $headings = filter_input(INPUT_POST, "headings", FILTER_VALIDATE_BOOLEAN);
-            
-            if($fileUploaded){
-                $csv = new FNVi\CSVParser\CSVParser($_FILES["filename"]["tmp_name"],$headings,true);
-                $csv->swapHeadings(["Equip Type"=>"equipment","Hard Soft"=>"equipment"]);
-            }
         ?>
         <main class="container">
             <div class="row">
-                <fieldset class="col-xs-12">
-                    <legend>
-                        Upload File
-                    </legend>
-                    <form enctype="multipart/form-data" method="post" class="form-inline">
-                        <div class="form-group">
-                            <label class="control-label">
-                                File:
-                            </label>
-                            <label class="btn btn-success">
-                                Choose File
-                                <input type="file" accept=".csv" name="filename" style="display:none; width: 0px; height:0px;">
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="headings" checked> Use headings
-                            </label>
-                        </div>
-                        <button class="btn btn-success">Upload</button>
-                    </form>
-                </fieldset>
-            </div>
-            <br>
-            <?php if($fileUploaded) { ?>
-                <div class="row">
-                    <fieldset class="col-xs-12">
-                        <legend>Results</legend>
-                           <?php foreach($csv as $row){
-                                echo "<pre>".json_encode($row, 128)."</pre>";
-                            } ?>
-                    </fieldset>
+                <div class="col-xs-12">
+                    <div class="jumbotron">
+                        This example demonstrates the use of the CSVParser and CSVMaker classes
+                    </div>
                 </div>
-            <?php } ?>
+            </div>
         </main>
     </body>
 </html>
