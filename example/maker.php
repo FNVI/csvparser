@@ -22,7 +22,7 @@ $file->writeLine($headings);
 for($r = 1; $r <= $fileData["rows"]; $r++){
     $row = [];
     for($c = 1; $c <= $fileData["columns"]; $c++){
-        $row[] = "$c:$r";
+        $row[] = "Data $c:$r";
     }
     $file->writeLine($row);
 }
