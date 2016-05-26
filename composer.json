@@ -9,7 +9,7 @@
     ],
     "autoload": {
         "psr-4": { 
-            "FNVi\\CSVParser\\": "src"
+            "FNVi\\CSVTools\\": "src"
         },
         "files":[
             "settings.php"
