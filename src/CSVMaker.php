@@ -12,7 +12,7 @@ class CSVMaker {
     
     private $handle;
     private $json;
-    private $headings;
+    private $headings = [];
     
     public function __construct($filename, $json = true, $store = false) {
         $this->json = $json;
@@ -22,6 +22,14 @@ class CSVMaker {
             header('Content-Type: application/csv');
             header('Content-Disposition: attachement; filename="' . $filename . ".csv" . '";');
         }
+    }
+    
+    public function swapHeadings(array $headings){
+        $this->headings = $headings;
+    }
+    
+    public function reverseDotNotation(){
+
     }
     
     public function setHeadings(array $headings){
