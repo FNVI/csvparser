@@ -7,11 +7,14 @@
             "email": "joew@fnvi.co.uk"
         }
     ],
+    "require-dev": {
+        "phpunit/phpunit": "5.4.*"
+    },
     "autoload": {
-        "psr-4": { 
+        "psr-4": {
             "FNVi\\CSVTools\\": "src"
         },
-        "files":[
+        "files": [
             "settings.php"
         ]
     }
