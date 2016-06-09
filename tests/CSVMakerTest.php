@@ -32,15 +32,15 @@ class CSVMakerTests extends TestCase {
     }
 
     /**
-     * @depends createFile
+     * @depends testCreateFile
      * @param string $filename
      */
     public function testFileContent($filename) {
         $this->assertFileEquals($filename, "CSVExpected.csv");
     }
 
-    public function tearDown() {
+    public static function tearDownAfterClass() {
         unlink("CSVActual.csv");
-        parent::tearDown();
+        parent::tearDownAfterClass();
     }
 }
