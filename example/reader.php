@@ -32,13 +32,14 @@ and open the template in the editor.
         </nav>
         <?php
             include '../vendor/autoload.php';
+            use FNVi\CSVTools\CSVParser;
             
             $fileUploaded = $_FILES["filename"] ? true : false;
             
             $headings = filter_input(INPUT_POST, "headings", FILTER_VALIDATE_BOOLEAN);
             
             if($fileUploaded){
-                $csv = new FNVi\CSVParser\CSVParser($_FILES["filename"]["tmp_name"],$headings,true);
+                $csv = new CSVParser($_FILES["filename"]["tmp_name"],$headings,true);
                 $csv->swapHeadings(["Equip Type"=>"equipment","Hard Soft"=>"equipment"]);
             }
         ?>
