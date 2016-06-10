@@ -1,5 +1,5 @@
 <?php
-use PHPUnit\Framework\TestCase;
+use phpunit\framework\TestCase;
 use FNVi\CSVTools\CSVMaker;
 
 /**
