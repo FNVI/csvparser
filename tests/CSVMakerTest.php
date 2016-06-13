@@ -10,7 +10,7 @@ use FNVi\CSVTools\CSVMaker;
 class CSVMakerTests extends TestCase {
 
     public function testCreateFile() {
-        $filename = "CSVActual.csv";
+        $filename = "tests/CSVActual.csv";
 
         $maker = new CSVMaker($filename, true, true);
 
@@ -36,7 +36,11 @@ class CSVMakerTests extends TestCase {
      * @param string $filename
      */
     public function testFileContent($filename) {
-//        $this->assertFileEquals($filename, "CSVExpected.csv");
+        $this->assertFileEquals($filename, "tests/CSVExpected.csv");
     }
 
+    public static function tearDownAfterClass()
+    {
+        unlink("tests/CSVActual.csv");
+    }
 }
