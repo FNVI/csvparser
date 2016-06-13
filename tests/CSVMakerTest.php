@@ -1,14 +1,13 @@
 <?php
-use phpunit\framework\TestCase;
+use PHPUnit\Framework\TestCase;
 use FNVi\CSVTools\CSVMaker;
-
 /**
- * Description of CSVMakerTest
+ * Description of NachoTest
  *
  * @author Joe Wheatley <joew@fnvi.co.uk>
  */
-class CSVMakerTests extends TestCase {
-
+class CSVMakerTest extends TestCase{
+    
     public function testCreateFile() {
         $filename = "tests/CSVActual.csv";
 
