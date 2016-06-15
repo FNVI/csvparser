@@ -80,6 +80,19 @@ class CSVParser implements \Iterator{
         return $output;
     }
     
+    public function checkNumbers($value){
+        if(is_numeric($value)){
+//            if(is_float(floatval($value))){
+//                return floatval($value);
+//            }
+//            elseif(is_int(intval($value))){
+//                return intval($value);
+//            }
+            return intval($value);
+        }
+        return $value;
+    }
+    
     /**
      * Gets the headings from the first line of the file being read
      * @return array
@@ -119,7 +132,8 @@ class CSVParser implements \Iterator{
      * @return array
      */
     public function next() {
-        return $this->currentRow = fgetcsv($this->handle);
+        $this->currentRow = fgetcsv($this->handle);
+        return $this->currentRow = array_map(array($this,"checkNumbers"),  is_array($this->currentRow) ? $this->currentRow : [$this->currentRow]);
     }
 
     /**
