@@ -83,7 +83,7 @@ class CSVParserTest extends TestCase{
      * @param CSVParser $parser
      */
     public function testReadFileJsonHeadings($parser){
-        $expected = $this->hasHeadingsExpected();
+        $expected = $this->expectedJsonHeadings();
         $index = 0;
         $actualResult = [];
         foreach($parser as $actual){
@@ -105,5 +105,6 @@ class CSVParserTest extends TestCase{
                 ]
             ];
         }
+        return $out;
     }
 }
