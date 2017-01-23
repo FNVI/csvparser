@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class FNVi\CSVTools\CSVParser</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
+	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
+
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">Overview</a>
+			</div>
+			<div class="collapse navbar-collapse">
+
+                <form id="search" class="navbar-form navbar-left" role="search">
+                    <input type="hidden" name="cx" value="">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <div class="form-group">
+                        <input type="text" name="q" class="search-query form-control" placeholder="Search">
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="namespace-FNVi.CSVTools.html" title="Summary of FNVi\CSVTools"><span>Namespace</span></a>
+					</li>
+					<li class="active">
+<span>Class</span>					</li>
+
+
+
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-FNVi.html">
+							FNVi<span></span>
+						</a>
+							<ul>
+					<li class="active">
+						<a href="namespace-FNVi.CSVTools.html">
+							CSVTools						</a>
+							</li>
+								</ul></li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-FNVi.CSVTools.CSVMaker.html">CSVMaker</a></li>
+				<li class="active"><a href="class-FNVi.CSVTools.CSVParser.html">CSVParser</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class CSVParser</h1>
+
+
+	<div class="description">
+	<p>Provides Iterator access to a CSV file.
+Includes options to use the files headers to create JSON objects, allows for headings to be swapped and the use of dot notation in headings to structure the data internally.
+Any filtering/typecasting of results will be the responsibility of the end user in order to keep this class minimal</p>
+	</div>
+
+	<dl class="tree well">
+		<dd style="padding-left:0px">
+<b><span>FNVi\CSVTools\CSVParser</span></b>			
+			 implements 
+<span>Iterator</span>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="alert alert-info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-FNVi.html">FNVi</a>\<a href="namespace-FNVi.CSVTools.html">CSVTools</a><br>
+		
+
+				<b>Author:</b>
+				Joe Wheatley <a href="&#x6d;&#x61;&#105;&#108;&#116;o&#x3a;&#x6a;&#x6f;&#101;&#119;&#64;&#x66;&#x6e;&#x76;&#105;&#46;&#99;&#x6f;&#x2e;&#x75;&#107;">&#x6a;&#x6f;&#101;&#119;&#64;&#x66;&#x6e;&#x76;&#105;&#46;&#99;&#x6f;&#x2e;&#x75;&#107;</a><br>
+			<b>Located at</b> <a href="source-class-FNVi.CSVTools.CSVParser.html#5-159" title="Go to source code">CSVParser.php</a>
+		<br>
+	</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Methods summary</h2></div>
+			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="__construct" id="___construct">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#___construct">#</a>
+			<code><a href="source-class-FNVi.CSVTools.CSVParser.html#22-40" title="Go to source code">__construct</a>( <span>string <var>$filename</var></span>, <span>boolean <var>$useHeadings</var> = <span class="php-keyword1">false</span></span>, <span>boolean <var>$json</var> = <span class="php-keyword1">false</span></span> )</code>
+
+			<div class="description short">
+				<p>Creates the object</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Creates the object</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$filename</var></dt>
+						<dd>The path to the file</dd>
+						<dt><var>$useHeadings</var></dt>
+						<dd>Option to use the headings (if true)</dd>
+						<dt><var>$json</var></dt>
+						<dd>Option to use dot notation (if true)</dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="swapHeadings" id="_swapHeadings">
+
+			<td class="attributes"><code>
+				 public 
+				array
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_swapHeadings">#</a>
+			<code><a href="source-class-FNVi.CSVTools.CSVParser.html#42-51" title="Go to source code">swapHeadings</a>( <span>array <var>$headings</var></span> )</code>
+
+			<div class="description short">
+				<p>Swaps any of the headings from the file to a preferred name.
+Can be used one at a time or multiple values at once.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Swaps any of the headings from the file to a preferred name.
+Can be used one at a time or multiple values at once.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$headings</var></dt>
+						<dd>An associative array where the current headings are keys and new headings are values</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						array<br>The new headings
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="useDotNotation" id="_useDotNotation">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_useDotNotation">#</a>
+			<code><a href="source-class-FNVi.CSVTools.CSVParser.html#53-59" title="Go to source code">useDotNotation</a>( <span>boolean <var>$bool</var> = <span class="php-keyword1">true</span></span> )</code>
+
+			<div class="description short">
+				<p>Sets whether dot notation will be used or not</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Sets whether dot notation will be used or not</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$bool</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="dotNotation" id="_dotNotation">
+
+			<td class="attributes"><code>
+				 protected 
+				array
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_dotNotation">#</a>
+			<code><a href="source-class-FNVi.CSVTools.CSVParser.html#61-82" title="Go to source code">dotNotation</a>( <span>array <var>$array</var></span> )</code>
+
+			<div class="description short">
+				<p>Takes an associative array, and if any of the keys have dot notation
+it returns them as a php multi dimensional array representation of a
+JSON object</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Takes an associative array, and if any of the keys have dot notation
+it returns them as a php multi dimensional array representation of a
+JSON object</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$array</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						array
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getHeadings" id="_getHeadings">
+
+			<td class="attributes"><code>
+				 public 
+				array
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getHeadings">#</a>
+			<code><a href="source-class-FNVi.CSVTools.CSVParser.html#84-94" title="Go to source code">getHeadings</a>( )</code>
+
+			<div class="description short">
+				<p>Gets the headings from the first line of the file being read</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Gets the headings from the first line of the file being read</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						array
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="current" id="_current">
+
+			<td class="attributes"><code>
+				 public 
+				array
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_current">#</a>
+			<code><a href="source-class-FNVi.CSVTools.CSVParser.html#96-108" title="Go to source code">current</a>( )</code>
+
+			<div class="description short">
+				<p>Returns the current line of the CSV file, making use of the settings
+to modify the structure</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Returns the current line of the CSV file, making use of the settings
+to modify the structure</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						array
+					</div>
+
+
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code>Iterator::current()</code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="key" id="_key">
+
+			<td class="attributes"><code>
+				 public 
+				integer
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_key">#</a>
+			<code><a href="source-class-FNVi.CSVTools.CSVParser.html#110-116" title="Go to source code">key</a>( )</code>
+
+			<div class="description short">
+				<p>Gets the current key (current row in csv file)</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Gets the current key (current row in csv file)</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						integer
+					</div>
+
+
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code>Iterator::key()</code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="next" id="_next">
+
+			<td class="attributes"><code>
+				 public 
+				array
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_next">#</a>
+			<code><a href="source-class-FNVi.CSVTools.CSVParser.html#118-124" title="Go to source code">next</a>( )</code>
+
+			<div class="description short">
+				<p>Reads the next row from the CSV file</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Reads the next row from the CSV file</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						array
+					</div>
+
+
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code>Iterator::next()</code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="rewind" id="_rewind">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_rewind">#</a>
+			<code><a href="source-class-FNVi.CSVTools.CSVParser.html#135-145" title="Go to source code">rewind</a>( )</code>
+
+			<div class="description short">
+				<p>Rewinds back to the beginning of the file</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Rewinds back to the beginning of the file</p>
+
+
+
+
+
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code>Iterator::rewind()</code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="valid" id="_valid">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_valid">#</a>
+			<code><a href="source-class-FNVi.CSVTools.CSVParser.html#147-157" title="Go to source code">valid</a>( )</code>
+
+			<div class="description short">
+				<p>Checks for the end of the file</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Checks for the end of the file</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code>Iterator::valid()</code></div>
+			</div>
+			</div></td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
