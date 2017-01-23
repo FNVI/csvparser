@@ -4,7 +4,8 @@ namespace FNVi\CSVTools;
 
 /**
  * Provides Iterator access to a CSV file.
- * Includes options to use the files headers to create JSON objects, allows for headings to be swapped and the use of dot notation in headings to structure the data internally
+ * Includes options to use the files headers to create JSON objects, allows for headings to be swapped and the use of dot notation in headings to structure the data internally.
+ * Any filtering/typecasting of results will be the responsibility of the end user in order to keep this class minimal
  *
  * @author Joe Wheatley <joew@fnvi.co.uk>
  */
@@ -79,20 +80,7 @@ class CSVParser implements \Iterator{
         }
         return $output;
     }
-    
-    public function checkNumbers($value){
-        if(is_numeric($value)){
-//            if(is_float(floatval($value))){
-//                return floatval($value);
-//            }
-//            elseif(is_int(intval($value))){
-//                return intval($value);
-//            }
-            return intval($value);
-        }
-        return $value;
-    }
-    
+        
     /**
      * Gets the headings from the first line of the file being read
      * @return array
@@ -113,7 +101,7 @@ class CSVParser implements \Iterator{
     public function current() {
         $this->counter++;
         if(count($this->headings)){
-            $row = array_combine($this->headings, $this->currentRow);
+            $row = array_filter(array_combine($this->headings, $this->currentRow),[$this,"filter"]);
             return $this->dotnotation ? $this->dotnotation($row) : $row;
         }
         return $this->currentRow;
@@ -132,12 +120,20 @@ class CSVParser implements \Iterator{
      * @return array
      */
     public function next() {
-        $this->currentRow = fgetcsv($this->handle);
-        return $this->currentRow = array_map(array($this,"checkNumbers"),  is_array($this->currentRow) ? $this->currentRow : [$this->currentRow]);
+        return $this->currentRow = fgetcsv($this->handle);
+    }
+    
+    /**
+     * This will be used to filter any empty values from the row
+     * @param mixed $value
+     * @return bool
+     */
+    private function filter($value){
+        return ($value !== "");
     }
 
     /**
-     * Rewinds back to the beginniing of the file
+     * Rewinds back to the beginning of the file
      */
     public function rewind() {
         rewind($this->handle);
