@@ -107,4 +107,31 @@ class CSVParserTest extends TestCase{
         }
         return $out;
     }
+    
+    public function testOpenFileJsonHeadingsEmpty(){
+        return new CSVParser('tests/jsonHeadingsEmpty.csv', true, true);
+    }
+    
+    /**
+     * @depends testOpenFileJsonHeadingsEmpty
+     * @param CSVParser $parser
+     */
+    public function testReadFileJsonHeadingsEmpty($parser){
+        $expected = $this->expectedJsonHeadingsEmpty();
+        $index = 0;
+        $actualResult = [];
+        foreach($parser as $actual){
+            $this->assertEquals($expected[$index], $actual);
+            $index++;
+            $actualResult[] = $actual;
+        }
+        $this->assertEquals($expected, $actualResult);
+    }
+    
+    public function expectedJsonHeadingsEmpty(){
+        return [
+            ["dot"=>["notation2"=>"R1C3"]],
+            ["normal"=>"R2C1","dot"=>["notation"=>"R2C2", "notation2"=>"R2C3"]]
+        ];
+    }
 }
